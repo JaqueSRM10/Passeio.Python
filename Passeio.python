@@ -1,0 +1,26 @@
+class Passenger:
+    def __init__(self, name, seat, activities):
+        self.name = name
+        self.seat = seat
+        self.activities = activities
+
+class TourOrganizer:
+    def __init__(self):
+        self.passengers = []
+
+    def add_passenger(self, name, seat, activities):
+        passenger = Passenger(name, seat, activities)
+        self.passengers.append(passenger)
+
+    def list_passengers(self):
+        for p in self.passengers:
+            print(f'Name: {p.name}, Seat: {p.seat}, Activities: {", ".join(p.activities)}')
+
+organizer = TourOrganizer()
+
+name = input('Passenger Name: ')
+seat = input('Seat Number: ')
+activities = input('Activities (comma separated): ').split(',')
+
+organizer.add_passenger(name, seat, [activity.strip() for activity in activities])
+organizer.list_passengers()
